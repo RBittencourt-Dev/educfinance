@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>EducFinance — organize, guarde e faça seu dinheiro render</title>
+<meta name="description" content="Guia interativo sobre como guardar, organizar e investir dinheiro no Brasil. Linguagem simples, do zero." />
+<meta name="theme-color" content="#F0ECE3" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+
+<!-- ══ preloader ══ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__inner">
+    <span class="loader__label">EducFinance</span>
+    <div class="loader__bar"><i id="loaderBar"></i></div>
+    <span class="loader__pct mono" id="loaderPct">0%</span>
+  </div>
+</div>
+
+<!-- ══ cursor ══ -->
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"></span></div>
+
+<!-- ══ grain ══ -->
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ══ progresso ══ -->
+<div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+
+<!-- ══ nav ══ -->
+<header class="nav" id="nav">
+  <a href="#topo" class="nav__brand" data-magnetic>
+    <span class="nav__mark" aria-hidden="true"></span>
+    <span>EducFinance</span>
+  </a>
+  <nav class="nav__links" aria-label="Seções">
+    <a href="#juros" data-magnetic>Juros</a>
+    <a href="#organizar" data-magnetic>Organizar</a>
+    <a href="#guardar" data-magnetic>Guardar</a>
+    <a href="#investir" data-magnetic>Investir</a>
+    <a href="#dolar" data-magnetic>Dólar</a>
+    <a href="#quiz" data-magnetic>Quiz</a>
+  </nav>
+  <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span>
+  </button>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <ul>
+    <li><a href="#juros">01 · Juros</a></li>
+    <li><a href="#organizar">02 · Organizar</a></li>
+    <li><a href="#guardar">03 · Onde guardar</a></li>
+    <li><a href="#investir">04 · Como investir</a></li>
+    <li><a href="#dolar">05 · Dólar</a></li>
+    <li><a href="#armadilhas">06 · Ciladas</a></li>
+    <li><a href="#mitos">07 · Mito ou verdade</a></li>
+    <li><a href="#quiz">08 · Quiz</a></li>
+    <li><a href="#glossario">09 · Glossário</a></li>
+  </ul>
+</div>
+
+<main id="topo">
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="hero">
+  <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+
+  <div class="hero__content">
+    <p class="hero__kicker" data-reveal>
+      <span class="dot" aria-hidden="true"></span>
+      EducFinance
+    </p>
+
+    <h1 class="hero__title">
+      <span class="line" data-split>Dinheiro não é</span>
+      <span class="line" data-split>sobre <em>ganhar muito</em>.</span>
+      <span class="line" data-split>É sobre saber</span>
+      <span class="line" data-split>pra onde ele vai.</span>
+    </h1>
+
+    <div class="hero__actions" data-reveal>
+      <a href="#juros" class="btn btn--solid" data-magnetic>
+        <span>Começar</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
+      </a>
+      <a href="#quiz" class="btn btn--ghost" data-magnetic>Ir pro quiz</a>
+    </div>
+  </div>
+
+  <div class="hero__foot">
+    <div class="hero__scroll" aria-hidden="true"><span></span>role</div>
+  </div>
+</section>
+
+<!-- ══════════ MARQUEE ══════════ -->
+<div class="marquee" id="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>guardar</span><i>◆</i><span>organizar</span><i>◆</i><span>investir</span><i>◆</i>
+    <span>render</span><i>◆</i><span>reserva</span><i>◆</i><span>começar cedo</span><i>◆</i>
+    <span>sem cilada</span><i>◆</i><span>pouco por mês</span><i>◆</i>
+  </div>
+</div>
+
+<!-- ══════════ 00 · NÚMEROS ══════════ -->
+<section class="section section--intro" id="real">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">00</span>
+      <h2 class="sec-title" data-reveal>Começar cedo vale mais<br>que ganhar muito</h2>
+    </div>
+
+    <ul class="stats stats--row">
+        <li data-reveal>
+          <span class="stat__val mono"><span data-count="5" data-prefix="R$ ">0</span></span>
+          <span class="stat__lbl">por dia, guardados dos 15 aos 60 anos, viram mais de <b data-count="700000" data-prefix="R$ " data-format="compact">0</b></span>
+        </li>
+        <li data-reveal>
+          <span class="stat__val mono"><span data-count="10" data-suffix=" anos">0</span></span>
+          <span class="stat__lbl">de diferença entre começar aos 18 ou aos 28 costumam <b>dobrar</b> o resultado</span>
+        </li>
+        <li data-reveal>
+          <span class="stat__val mono"><span data-count="30" data-prefix="R$ ">0</span></span>
+          <span class="stat__lbl">já dá pra fazer o primeiro investimento no Tesouro Direto</span>
+        </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════ 01 · JUROS ══════════ -->
+<section class="section section--dark" id="juros">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">01</span>
+      <h2 class="sec-title" data-reveal>O dinheiro que<br>trabalha sozinho</h2>
+    </div>
+
+    <div class="sim">
+      <div class="sim__side">
+        <p data-reveal>
+          O que rendeu também rende no mês seguinte. Por isso o gráfico
+          <em>encurva pra cima</em>. Mexe nos controles.
+        </p>
+
+        <div class="field">
+          <label for="cAporte">Quanto você guarda por mês</label>
+          <output class="field__out mono" id="cAporteOut">R$ 100</output>
+          <input type="range" id="cAporte" min="10" max="1000" step="10" value="100" />
+        </div>
+
+        <div class="field">
+          <label for="cAnos">Por quantos anos</label>
+          <output class="field__out mono" id="cAnosOut">20 anos</output>
+          <input type="range" id="cAnos" min="1" max="45" step="1" value="20" />
+        </div>
+
+        <div class="field">
+          <label for="cTaxa">Quanto rende por ano</label>
+          <output class="field__out mono" id="cTaxaOut">8%</output>
+          <input type="range" id="cTaxa" min="1" max="15" step="0.5" value="8" />
+        </div>
+
+        <div class="sim__result">
+          <div>
+            <span class="lbl">Você guardou</span>
+            <strong class="mono" id="cAportado">R$ 24.000</strong>
+          </div>
+          <div>
+            <span class="lbl">Rendeu sozinho</span>
+            <strong class="mono accent" id="cJuros">R$ 34.900</strong>
+          </div>
+          <div class="sim__total">
+            <span class="lbl">Total no fim</span>
+            <strong class="mono" id="cTotal">R$ 58.900</strong>
+          </div>
+        </div>
+      </div>
+
+      <figure class="sim__chart">
+        <canvas id="compoundChart" role="img" aria-label="Gráfico da evolução do dinheiro ao longo dos anos"></canvas>
+        <figcaption class="chart-legend">
+          <span><i class="sw sw--deposit"></i>o que você guardou</span>
+          <span><i class="sw sw--yield"></i>o que rendeu sozinho</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <aside class="callout" data-reveal>
+      <span class="callout__tag mono">Repara</span>
+      <p>Aumentar os <b>anos</b> muda o resultado muito mais do que aumentar o valor por mês. Tempo vale mais que quantia.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ══════════ 02 · ORGANIZAR ══════════ -->
+<section class="section" id="organizar">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">02</span>
+      <h2 class="sec-title" data-reveal>Divida o que entra</h2>
+    </div>
+
+    <p class="lead lead--narrow" data-reveal>
+      A conta <b>50 · 30 · 20</b> serve pra mesada, freela ou salário.
+    </p>
+
+    <div class="budget">
+      <div class="budget__input">
+        <label for="bRenda">Quanto entra por mês pra você</label>
+        <div class="money-input">
+          <span>R$</span>
+          <input type="number" id="bRenda" value="600" min="0" step="50" inputmode="numeric" />
+        </div>
+        <div class="chips">
+          <button class="chip" data-renda="100">R$ 100</button>
+          <button class="chip" data-renda="300">R$ 300</button>
+          <button class="chip is-on" data-renda="600">R$ 600</button>
+          <button class="chip" data-renda="1518">1 salário</button>
+        </div>
+      </div>
+
+      <div class="budget__viz">
+        <svg viewBox="0 0 200 200" class="donut" id="donut" aria-hidden="true">
+          <circle class="donut__bg" cx="100" cy="100" r="76" />
+          <circle class="donut__seg donut__seg--need" cx="100" cy="100" r="76" />
+          <circle class="donut__seg donut__seg--want" cx="100" cy="100" r="76" />
+          <circle class="donut__seg donut__seg--save" cx="100" cy="100" r="76" />
+        </svg>
+        <div class="donut__center">
+          <span class="mono" id="donutFocus">50%</span>
+          <small id="donutFocusLbl">o que precisa</small>
+        </div>
+      </div>
+
+      <ul class="budget__legend">
+        <li data-slice="need">
+          <span class="pct mono">50%</span>
+          <div>
+            <h3>O que você precisa</h3>
+            <p>Transporte, lanche, celular, material.</p>
+          </div>
+          <strong class="mono" id="bNeed">R$ 300</strong>
+        </li>
+        <li data-slice="want">
+          <span class="pct mono">30%</span>
+          <div>
+            <h3>O que você quer</h3>
+            <p>Rolê, streaming, roupa, jogo, delivery.</p>
+          </div>
+          <strong class="mono" id="bWant">R$ 180</strong>
+        </li>
+        <li data-slice="save">
+          <span class="pct mono">20%</span>
+          <div>
+            <h3>Pro futuro</h3>
+            <p>Guardar e investir. É a parte que cresce.</p>
+          </div>
+          <strong class="mono" id="bSave">R$ 120</strong>
+        </li>
+      </ul>
+    </div>
+
+    <div class="cards cards--3">
+      <article class="card" data-reveal data-tilt>
+        <span class="card__idx mono">a</span>
+        <h3>Separe no dia que entra</h3>
+        <p>Guardar o que sobra não funciona, porque nunca sobra. Tire os 20% assim que o dinheiro cair.</p>
+      </article>
+      <article class="card" data-reveal data-tilt>
+        <span class="card__idx mono">b</span>
+        <h3>Anote por 30 dias</h3>
+        <p>Bloco de notas ou app, tanto faz. Ver quanto vai em lanche e delivery já muda o jogo.</p>
+      </article>
+      <article class="card" data-reveal data-tilt>
+        <span class="card__idx mono">c</span>
+        <h3>Dê um nome à meta</h3>
+        <p>"Guardar dinheiro" é vago. "R$ 900 pro notebook até dezembro" tem chance real de acontecer.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 03 · ONDE GUARDAR ══════════ -->
+<section class="section section--dark" id="guardar">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">03</span>
+      <h2 class="sec-title" data-reveal>Onde guardar</h2>
+    </div>
+
+    <div class="stack-intro">
+      <canvas id="stackCanvas" class="stack-canvas" aria-hidden="true"></canvas>
+      <div class="stack-copy">
+        <p data-reveal>
+          A pergunta que decide tudo: <b>quando você vai precisar desse dinheiro?</b>
+          Quanto mais cedo for usar, mais seguro tem que ser o lugar.
+        </p>
+      </div>
+    </div>
+
+    <div class="table-scroll">
+      <table class="compare" id="compareTable">
+        <caption class="sr-only">Comparação entre formas de guardar dinheiro</caption>
+        <thead>
+          <tr>
+            <th scope="col">Onde</th>
+            <th scope="col">Rende</th>
+            <th scope="col">Pego quando?</th>
+            <th scope="col">Serve pra</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-reveal>
+            <th scope="row">Conta do banco</th>
+            <td><span class="pill pill--bad">nada</span></td>
+            <td>agora</td>
+            <td>gasto do dia a dia</td>
+          </tr>
+          <tr data-reveal>
+            <th scope="row">Poupança</th>
+            <td><span class="pill pill--meh">pouco</span></td>
+            <td>quando quiser</td>
+            <td>quase nada — tem opção melhor</td>
+          </tr>
+          <tr data-reveal class="is-hl">
+            <th scope="row">Tesouro Selic</th>
+            <td><span class="pill pill--good">bom</span></td>
+            <td>1 dia</td>
+            <td><b>o dinheiro de emergência</b></td>
+          </tr>
+          <tr data-reveal>
+            <th scope="row">CDB do dia a dia</th>
+            <td><span class="pill pill--good">bom</span></td>
+            <td>quando quiser</td>
+            <td>metas de até 2 anos</td>
+          </tr>
+          <tr data-reveal>
+            <th scope="row">Ações e fundos</th>
+            <td><span class="pill pill--var">sobe e desce</span></td>
+            <td>2 dias</td>
+            <td>metas de 5 anos pra frente</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="callout" data-reveal>
+      <span class="callout__tag mono">A ordem</span>
+      <p><b>1.</b> Junte uns 3 meses de gastos como emergência. <b>2.</b> Depois guarde pras metas com data. <b>3.</b> Só então pense em longo prazo.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ══════════ 04 · COMO INVESTIR ══════════ -->
+<section class="section" id="investir">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">04</span>
+      <h2 class="sec-title" data-reveal>O primeiro passo</h2>
+    </div>
+
+    <p class="lead lead--narrow" data-reveal>
+      Dá pra começar com menos de <b>R$ 50</b>, tudo pelo celular.
+    </p>
+
+    <ol class="steps" id="steps">
+      <li data-reveal>
+        <span class="step__n mono">01</span>
+        <div>
+          <h3>Tenha CPF e uma conta</h3>
+          <p>Menor de 18 abre a conta junto com o pai, a mãe ou o responsável. Vários bancos já têm conta pra adolescente.</p>
+        </div>
+      </li>
+      <li data-reveal>
+        <span class="step__n mono">02</span>
+        <div>
+          <h3>Abra conta numa corretora</h3>
+          <p>É de graça e leva uns minutos. Pode ser pelo seu próprio banco também.</p>
+        </div>
+      </li>
+      <li data-reveal>
+        <span class="step__n mono">03</span>
+        <div>
+          <h3>Responda o teste de perfil</h3>
+          <p>São umas 10 perguntas. Serve pra ver quanto risco você aguenta e evitar que te ofereçam coisa errada.</p>
+        </div>
+      </li>
+      <li data-reveal>
+        <span class="step__n mono">04</span>
+        <div>
+          <h3>Mande por Pix e invista</h3>
+          <p>Comece pelo Tesouro Selic. A ideia não é lucrar já — é entender como funciona na prática.</p>
+        </div>
+      </li>
+      <li data-reveal>
+        <span class="step__n mono">05</span>
+        <div>
+          <h3>Repita todo mês e esqueça</h3>
+          <p>Deixe automático e olhe pouco. Investimento de longo prazo checado todo dia só dá ansiedade.</p>
+        </div>
+      </li>
+    </ol>
+
+    <aside class="callout callout--warn" data-reveal>
+      <span class="callout__tag mono">Imposto</span>
+      <p>Você só paga quando tira o dinheiro, e o desconto é automático. Quanto mais tempo deixar guardado, <b>menos imposto paga</b>.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ══════════ 05 · DÓLAR ══════════ -->
+<section class="section section--night" id="dolar">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">05</span>
+      <h2 class="sec-title" data-reveal>E o dólar?</h2>
+    </div>
+
+    <div class="fx">
+      <div class="fx__copy">
+        <p data-reveal>
+          É <b>proteção</b>, não aposta: se o real perder valor, essa parte sobe e equilibra.
+          Mas o dólar <b>sobe e desce muito</b> — nunca use como dinheiro de emergência.
+        </p>
+
+        <div class="fx__sim">
+          <label for="fxValor">Se você trocasse</label>
+          <div class="money-input money-input--dark">
+            <span>R$</span>
+            <input type="number" id="fxValor" value="1000" min="0" step="100" inputmode="numeric" />
+          </div>
+          <div class="fx__rate">
+            <label for="fxCotacao">com o dólar a</label>
+            <div class="money-input money-input--dark money-input--sm">
+              <span>US$ 1 =&nbsp;R$</span>
+              <input type="number" id="fxCotacao" value="5.40" min="0.5" step="0.05" inputmode="decimal" />
+            </div>
+          </div>
+          <p class="fx__out">
+            daria <strong class="mono" id="fxResult">US$ 185,19</strong>
+          </p>
+          <small class="field__hint">Troque pelo valor do dólar de hoje pra ver o resultado real.</small>
+        </div>
+      </div>
+
+      <ul class="fx__ways">
+        <li data-reveal>
+          <h3>ETF de empresas dos EUA <span class="tag mono">mais simples</span></h3>
+          <p>Você compra em reais, pela corretora daqui, como se fosse uma ação. Um código só já te dá centenas de empresas americanas.</p>
+        </li>
+        <li data-reveal>
+          <h3>BDR <span class="tag mono">ação de fora</span></h3>
+          <p>É um jeito de comprar ação de empresa estrangeira sem sair da bolsa brasileira.</p>
+        </li>
+        <li data-reveal>
+          <h3>Dólar em papel <span class="tag mono">evite</span></h3>
+          <p>Comprar nota na casa de câmbio tem taxa alta e risco de guardar em casa. Só vale pra viagem.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 06 · CILADAS ══════════ -->
+<section class="section" id="armadilhas">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">06</span>
+      <h2 class="sec-title" data-reveal>Ciladas</h2>
+    </div>
+
+    <div class="traps">
+      <article class="trap" data-reveal data-tilt>
+        <h3>Pagar só o mínimo da fatura</h3>
+        <p>O resto vira dívida com um dos juros mais caros que existem. É a seção 01 virada contra você.</p>
+      </article>
+      <article class="trap" data-reveal data-tilt>
+        <h3>"Rende 10% por mês, garantido"</h3>
+        <p>Não existe. Alto e garantido ao mesmo tempo é golpe.</p>
+      </article>
+      <article class="trap" data-reveal data-tilt>
+        <h3>Parcelar "sem juros"</h3>
+        <p>Não é de graça: compromete o seu dinheiro dos próximos meses.</p>
+      </article>
+      <article class="trap" data-reveal data-tilt>
+        <h3>Esperar a hora certa</h3>
+        <p>Pouco e sempre vence muito e adiado.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 07 · MITOS ══════════ -->
+<section class="section section--dark" id="mitos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">07</span>
+      <h2 class="sec-title" data-reveal>Mito ou verdade?</h2>
+    </div>
+    <p class="lead lead--narrow" data-reveal>Clique nos cartões pra virar.</p>
+
+    <div class="myths" id="myths"></div>
+  </div>
+</section>
+
+<!-- ══════════ 08 · QUIZ ══════════ -->
+<section class="section" id="quiz">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">08</span>
+      <h2 class="sec-title" data-reveal>Testa aí</h2>
+    </div>
+
+    <div class="quiz" id="quizRoot">
+      <div class="quiz__bar"><i id="quizBar"></i></div>
+      <div class="quiz__stage" id="quizStage"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 09 · GLOSSÁRIO ══════════ -->
+<section class="section" id="glossario">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">09</span>
+      <h2 class="sec-title" data-reveal>O que significa</h2>
+    </div>
+    <div class="glossary" id="glossary"></div>
+  </div>
+</section>
+
+<!-- ══════════ CTA FINAL ══════════ -->
+<section class="final">
+  <div class="wrap">
+    <h2 class="final__title" data-reveal>
+      Comece com <em>R$ 20</em>.<br>Comece hoje.
+    </h2>
+    <p data-reveal>R$ 20 não muda sua vida. O hábito muda.</p>
+    <a href="#topo" class="btn btn--solid" data-magnetic>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V4M5 11l7-7 7 7"/></svg>
+      <span>Voltar ao topo</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div>
+      <p class="footer__brand">EducFinance</p>
+      <p class="footer__desc">Organize, guarde e faça seu dinheiro render.</p>
+    </div>
+    <div>
+      <h4>Onde conferir</h4>
+      <ul class="footer__links">
+        <li><a href="https://www.bcb.gov.br" target="_blank" rel="noopener">Banco Central</a></li>
+        <li><a href="https://www.tesourodireto.com.br" target="_blank" rel="noopener">Tesouro Direto</a></li>
+        <li><a href="https://www.investidor.gov.br" target="_blank" rel="noopener">Portal do Investidor</a></li>
+        <li><a href="https://www.fgc.org.br" target="_blank" rel="noopener">FGC</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer__base">
+    <span class="mono">© 2026 EducFinance</span>
+  </div>
+</footer>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
